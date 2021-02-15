@@ -1,11 +1,28 @@
 import React from 'react';
-import ChatsListScreen from './components/ChatsListScreen'
+import { BrowserRouter,Route, Redirect, Switch, RouteComponentProps } from 'react-router-dom';
+import ChatRoomScreen from './components/ChatRoomScreen';
+import ChatsListScreen from './components/ChatsListScreen';
+
 
 function App() {
+  const redirectToChats = () => <Redirect to="/chats" />
+
   return (
-    <div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact 
+        path="/chats" 
+        component={ChatsListScreen} />
+        <Route exact
+        path="/chats/:chatId"
+        component={({ match }: RouteComponentProps<{ chatId: string }>) => (
+          <ChatRoomScreen chatId={match.params.chatId} />
+        )}
+      />
+      </Switch>
+        <Route exact path="/" render={redirectToChats} />
        <ChatsListScreen />
-    </div>
+    </BrowserRouter>
   );
 }
 

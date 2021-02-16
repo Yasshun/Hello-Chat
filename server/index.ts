@@ -9,9 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
  
-app.get('/_ping', (req, res) => {
-  res.send('pong');
-  res.json(chats);
+app.get('/chats', (req, res) => {
+  res.send(chats);
 });
  
 const server = new ApolloServer({ schema });

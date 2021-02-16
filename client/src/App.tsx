@@ -10,18 +10,20 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact 
-        path="/chats" 
-        component={ChatsListScreen} />
-        <Route exact
-        path="/chats/:chatId"
-        component={({ match }: RouteComponentProps<{ chatId: string }>) => (
-          <ChatRoomScreen chatId={match.params.chatId} />
-        )}
-      />
-      </Switch>
+        <Route 
+          exact 
+          path="/chats" 
+          component={ChatsListScreen} />
+        <Route 
+          exact
+          path="/chats/:chatId"
+          component={({ match }: RouteComponentProps<{ chatId: string }>) => (
+            <ChatRoomScreen chatId={match.params.chatId} />
+            )}
+        />
         <Route exact path="/" render={redirectToChats} />
-       <ChatsListScreen />
+       <ChatsListScreen history={history}/>
+      </Switch>
     </BrowserRouter>
   );
 }

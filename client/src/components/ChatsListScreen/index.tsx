@@ -2,16 +2,22 @@ import React from 'react';
 import ChatsNavbar from './ChatsNavbar';
 import ChatsList from './ChatsList';
 import styled from 'styled-components';
+import { History } from 'history';
+
  
 const Container = styled.div`
   height: 100vh;
 `;
 
-function ChatsListScreen() {
+interface ChatsListScreenProps {
+    history: History;
+  }
+
+  const ChatsListScreen: React.FC<ChatsListScreenProps> = ({ history }) => {
     return (
         <Container>
             <ChatsNavbar />
-            <ChatsList />
+            <ChatsList history={history}/>
         </Container>
             
         

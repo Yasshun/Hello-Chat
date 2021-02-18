@@ -81,7 +81,7 @@ const ChatsList: React.FC<ChatsListProps> = ({ history }) => {
             <StyledListItem 
             key={chat!.id} 
             button
-            // onClick={navToChat.bind(null, chat)}
+            onClick={navToChat.bind(null, chat)}
             >
               <ChatPicture src={chat.picture} alt="Profile" />
               <ChatInfo>

@@ -46,7 +46,7 @@ const ChatNavbar: React.FC<ChatNavbarProps> = ({ chat, history }) => {
   }, [history]);
   return (
       <Container>
-          <BackButton>
+          <BackButton onClick={navBack}>
             <ArrowBackIcon />
           </BackButton>
           <Picture src={chat.picture} />

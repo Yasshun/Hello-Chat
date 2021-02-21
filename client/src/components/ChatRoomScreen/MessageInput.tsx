@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import { Message } from '@material-ui/icons';
 import SendIcon from '@material-ui/icons/Send';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -40,12 +40,39 @@ const SendButton = styled(Button)`
   }
 `;
 
+interface MessageInputProps {
+  onSendMessage(content: string): any;
+}
 
-const MessageInput: React.FC = () => {
+
+const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage }) => {
+  const [message, setMessage] = useState("");
+  const onkeyPress = (e: any) => {
+    if (e.charCode === 13) {
+      submitMessage();
+    }
+  }
+
+  const submitMessage = () => {
+    if(!message) return;
+
+    setMessage("");
+
+    if(typeof onSendMessage === "function") {
+      onSendMessage(message);
+    }
+  }
+
     return (
         <Container>
-            <ActualInput type="text" placeholder="メッセージを入力する"/>
-            <SendButton variant="contained">
+            <ActualInput 
+            type="text" 
+            placeholder="メッセージを入力する"
+            value={message}
+            onKeyPress={onkeyPress}
+            onChange={e => setMessage(e.target.value)}
+            />
+            <SendButton variant="contained" color="primary" onClick={submitMessage}>
                 <SendIcon />
             </SendButton>
         </Container>

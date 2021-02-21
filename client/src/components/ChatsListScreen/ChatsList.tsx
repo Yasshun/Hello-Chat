@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { History } from 'history';
 import moment from 'moment';
 import { List, ListItem } from '@material-ui/core';
@@ -67,21 +67,21 @@ const ChatsList: React.FC<ChatsListProps> = ({ history }) => {
       setChats(chats);
     }, []);
 
-    const navToChat = useCallback(
-      (chat) => {
-        history.push(`chats/${chat.id}`);
-      },
-      [history]
-    );
+  const navToChat = useCallback(
+    (chat) => {
+      history.push(`chats/${chat.id}`);
+    },
+    [history]
+  );
     
     return (
         <Container>
         <StyledList>
           {chats.map((chat) => (
             <StyledListItem 
-            key={chat!.id} 
-            button
-            onClick={navToChat.bind(null, chat)}
+              key={chat!.id} 
+              button
+              onClick={navToChat.bind(null, chat)}
             >
               <ChatPicture src={chat.picture} alt="Profile" />
               <ChatInfo>

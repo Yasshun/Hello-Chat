@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter,Route, Redirect, Switch, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter,Route, Redirect, RouteComponentProps } from 'react-router-dom';
 import ChatRoomScreen from './components/ChatRoomScreen';
 import ChatsListScreen from './components/ChatsListScreen';
 import AnimatedSwitch from './components/AnimatedSwitch';
+
 
 
 
@@ -20,12 +21,12 @@ const App: React.FC = () => {
         <Route 
           exact
           path="/chats/:chatId"
-          component={({ match }: RouteComponentProps<{ chatId: string }>) => (
-            <ChatRoomScreen chatId={match.params.chatId} />
+          component={({ match, history }: RouteComponentProps<{ chatId: string }>) => (
+            <ChatRoomScreen chatId={match.params.chatId} history={history}/>
             )}
         />
-        <Route exact path="/" render={redirectToChats} />
       </AnimatedSwitch>
+        <Route exact path="/" render={redirectToChats} />
     </BrowserRouter>
   );
 }

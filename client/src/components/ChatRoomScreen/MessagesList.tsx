@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
  
 const MessageItem = styled.div`
-  float: right;
+  /* float: right; */
   background-color: #dcf8c6;
   display: inline-block;
   position: relative;
